@@ -1,0 +1,12 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: ProviderTicket
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defalutZone: http://localhost:8761/eureka/

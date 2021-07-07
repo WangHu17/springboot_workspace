@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Add</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" th:href="@{/webjars/bootstrap/5.0.1/css/bootstrap.min.css}" href="asserts/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link type="text/css" th:href="@{/asserts/css/dashboard.css}" href="asserts/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="commons/bar::#header_nev"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="commons/bar::#sidebarMenu(activeUri='emps')"></div>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <form th:action="@{/emp}" method="post">
+                <input type="hidden" name="_method" value="put" th:if="${emp!=null}">
+                <input type="hidden" name="id" th:if="${emp!=null}" th:value="${emp.id}">
+                <br>
+                <div class="mb-3">
+                    <label for="Lastname" class="form-label">Lastname</label>
+                    <input name="lastName" type="text" class="form-control" id="Lastname" aria-describedby="emailHelp" placeholder="zhangsan"
+                           th:value="${emp!=null}?${emp.lastName}">
+                </div>
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="Email" placeholder="zhangsan@qq.com"
+                           th:value="${emp!=null}?${emp.email}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Gender</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="1" checked="checked"
+                               th:checked="${emp!=null}?${emp.gender==1}">
+                        <label class="form-check-label" for="inlineRadio1">男</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="2"
+                               th:checked="${emp!=null}?${emp.gender==0}">
+                        <label class="form-check-label" for="inlineRadio2">女</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Department</label>
+                    <select name="department.id" class="form-select" aria-label="Default select example">
+                        <option th:selected="${emp!=null}?${dept.id==emp.department.id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${dept.departmentName}"></option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="Birth" class="form-label">Birth</label>
+                    <input name="birth" type="birth" class="form-control" id="Birth" placeholder="2020-2-2"
+                        th:value="${emp!=null}?${#dates.format(emp.birth,'yyyy-MM-dd HH:mm')}">
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="${emp!=null}?'修改':'添加'">添加</button>
+            </form>
+        </main>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.0.1/js/bootstrap.bundle.js}" src="asserts/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+<script>
+    (function () {
+        'use strict'
+        feather.replace()
+    })()
+</script>
+</body>
+</html>

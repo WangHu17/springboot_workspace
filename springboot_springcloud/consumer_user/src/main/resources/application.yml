@@ -1,0 +1,12 @@
+server:
+  port: 8200
+spring:
+  application:
+    name: ConsumerUser
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defalutZone: http://localhost:8761/eureka/

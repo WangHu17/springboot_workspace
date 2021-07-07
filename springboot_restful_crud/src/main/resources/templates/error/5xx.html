@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.83.1">
+    <title>Dashboard</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+    <!-- Bootstrap core CSS -->
+    <link type="text/css" th:href="@{/webjars/bootstrap/5.0.1/css/bootstrap.min.css}" href="asserts/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link type="text/css" th:href="@{/asserts/css/dashboard.css}" href="asserts/css/dashboard.css" rel="stylesheet">
+</head>
+<body>
+
+<div th:replace="commons/bar::#header_nev"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div th:replace="commons/bar::#sidebarMenu(activeUri='main.html')"></div>
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <h1>status:[[${status}]]</h1>
+            <h2>timestamp:[[${timestamp}]]</h2>
+            <h2>exception:[[${exception}]]</h2>
+            <h2>message:[[${message}]]</h2>
+            <h2>ext:[[${ext.code}]]</h2>
+            <h2>ext:[[${ext.message}]]</h2>
+        </main>
+    </div>
+</div>
+
+<script th:src="@{/webjars/bootstrap/5.0.1/js/bootstrap.bundle.js}" src="asserts/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+<script>
+    (function () {
+        'use strict'
+        feather.replace()
+    })()
+</script>
+</body>
+</html>

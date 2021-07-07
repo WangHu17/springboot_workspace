@@ -1,0 +1,31 @@
+#person:
+#  lastName: 王虎
+#  age: 22
+#  boss: true
+#  birth: 1998/08/08
+#  map: {k1: dx,k2: zj}
+#  list:
+#    - 1
+#    - 2
+#  dog:
+#    name: 小黄
+#    age: 3
+
+spring:
+  profiles:
+    active: dev
+
+---
+server:
+  port: 8081
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+server:
+  port: 8082
+spring:
+  config:
+    activate:
+      on-profile: prod
